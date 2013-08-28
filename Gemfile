@@ -29,8 +29,6 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'bootstrap-sass-rails'
 gem 'redcarpet'
-gem 'albino'
-gem 'nokogiri'
 
 group :development do
   gem 'better_errors'
