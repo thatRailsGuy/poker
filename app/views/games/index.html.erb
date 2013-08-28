@@ -1,0 +1,48 @@
+<h1>Listing games</h1>
+
+
+Tags:
+<% @tags.each do |tag| %>
+	<span class="badge"><%= tag %></span>
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Style</th>
+      <th>Min players</th>
+      <th>Max players</th>
+      <th>Num cards</th>
+      <th>Tags</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+				<td><%=game.name.map {|name|
+					 			link_to name, game
+					}.join(", ").html_safe %></td>
+        <td><%= game.description %></td>
+        <td><%= game.style_id %></td>
+        <td><%= game.min_players %></td>
+        <td><%= game.max_players %></td>
+        <td><%= game.num_cards %></td>
+        <td><% game.tags.each do |tag| %>
+					<span class="badge"><%= tag %></span>
+					<% end %>
+				</td>
+        <td><%= link_to 'Edit', edit_game_path(game) %></td>
+        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game', new_game_path %>

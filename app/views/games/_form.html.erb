@@ -1,0 +1,45 @@
+<%= form_for(@game) do |f| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% @game.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :style_id %><br>
+    <%= f.collection_radio_buttons :style_id, Style.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :min_players %><br>
+    <%= f.number_field :min_players %>
+  </div>
+  <div class="field">
+    <%= f.label :max_players %><br>
+    <%= f.number_field :max_players %>
+  </div>
+  <div class="field">
+    <%= f.label :num_cards %><br>
+    <%= f.number_field :num_cards %>
+  </div>
+  <div class="field">
+    <%= f.label :tags %><br>
+    <%= f.collection_check_boxes :tags, %w[wildcard pot-matching dickish], :to_s, :to_s%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

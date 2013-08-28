@@ -1,0 +1,18 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: poker_dev
+  username: app_user
+  password: password
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: poker_test
+  username: app_user
+  password: password
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: poker_prod
+  username: 
+  password:

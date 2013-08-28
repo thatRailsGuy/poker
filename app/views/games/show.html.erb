@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @game.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= markdown(@game.description) %>
+</p>
+
+<p>
+  <strong>Style:</strong>
+  <%= @game.style_id %>
+</p>
+
+<p>
+  <strong>Min players:</strong>
+  <%= @game.min_players %>
+</p>
+
+<p>
+  <strong>Max players:</strong>
+  <%= @game.max_players %>
+</p>
+
+<p>
+  <strong>Num cards:</strong>
+  <%= @game.num_cards %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @game.tags %>
+</p>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

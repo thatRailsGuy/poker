@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  style_id_id: 
+  min_players: 1
+  max_players: 1
+  num_cards: 1
+  tags: MyString
+
+two:
+  name: MyString
+  description: MyText
+  style_id_id: 
+  min_players: 1
+  max_players: 1
+  num_cards: 1
+  tags: MyString
