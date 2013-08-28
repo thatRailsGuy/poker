@@ -6,6 +6,7 @@
 
 *.rbc
 *.sassc
+*.yml
 .sass-cache
 capybara-*.html
 .rspec
@@ -19,5 +20,4 @@ capybara-*.html
 /spec/tmp/*
 **.orig
 rerun.txt
-<<<<<<< HEAD
 pickle-email-*.html
