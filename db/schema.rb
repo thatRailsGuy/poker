@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20130827185957) do
 
   create_table "games", force: true do |t|
-    t.string   "name",                     array: true
+    t.string   "name"
     t.text     "description"
     t.integer  "style_id"
     t.integer  "min_players"

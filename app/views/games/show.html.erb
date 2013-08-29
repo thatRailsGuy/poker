@@ -12,7 +12,7 @@
 
 <p>
   <strong>Style:</strong>
-  <%= @game.style_id %>
+  <%= @game.style.name %>
 </p>
 
 <p>
@@ -32,7 +32,9 @@
 
 <p>
   <strong>Tags:</strong>
-  <%= @game.tags %>
+  <% @game.tags.each do |tag| %>
+		<span class="badge"><%= tag %></span>
+	<% end %>
 </p>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
