@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<div class="alert-success"><p id="notice"><%= notice %></p></div>
 
 <p>
   <strong>Name:</strong>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Style:</strong>
-  <%= @game.style.name %>
+  <%= @game.style.name unless @game.style.nil? %>
 </p>
 
 <p>

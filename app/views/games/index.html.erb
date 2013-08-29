@@ -24,7 +24,7 @@ Tags:
     <% @games.each do |game| %>
       <tr>
 				<td><%= link_to game.name, game %></td>
-        <td><%= game.style.name %></td>
+        <td><%= game.style.name unless game.style.nil? %></td>
         <td><%= game.min_players %></td>
         <td><%= game.max_players %></td>
         <td><%= game.num_cards %></td>
