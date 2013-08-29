@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def change_words_to_numbers(full_document)
+    full_document.gsub(/(two)/,'2').gsub(/(three)/,'3').gsub(/(four)/,'4').gsub(/(five)/,'5').gsub(/(six)/,'6').gsub(/(seven)/,'7').gsub(/(eight)/,'8').gsub(/(nine)/,'9').gsub(/(ten)/,'10')
+  end
   # Insert card images in markdown
   def insert_cards(full_document)
     full_document.gsub(/\[card:(.*?)\]/) do
@@ -13,7 +16,7 @@ module ApplicationHelper
   end
   
   def insert_custom_replacements(full_document)
-    insert_cards(link_to_game(full_document))
+    insert_cards(link_to_game(change_words_to_numbers(full_document)))
   end
   def markdown(content)
     @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, hard_wrap: true, filter_html: true, no_intraemphasis: true, fenced_code: true, gh_blockcode: true)
