@@ -1,13 +1,13 @@
 module ApplicationHelper
   # Insert card images in markdown
   def insert_cards(full_document)
-    full_document.gsub(/\[card:(.*)\]/) do
+    full_document.gsub(/\[card:(.*?)\]/) do
       "#{image_tag("SVG-cards-1.3/"+$1.tr(" ","_")+".svg", height: '64')}"
     end
   end
   # Insert link to a game referenced by name
   def link_to_game(full_document)
-    full_document.gsub(/\[game:(.*)\]/) do
+    full_document.gsub(/\[game:(.*?)\]/) do
       link_to $1, Game.where(name: $1).first
     end
   end
