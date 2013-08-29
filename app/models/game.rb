@@ -2,22 +2,27 @@ class Game < ActiveRecord::Base
   belongs_to :style
   
   def self.search_all(queries)
-    games = Game.all
+    list = []
     queries.gsub(/\s+/m, ' ').strip.split(" ").each do |query|
-     games1 = games.where("name @@ :q or description @@ :q", q: query)
-     games2 = []
-     games2 = games.where(style_id: Style.where("name @@ :q", q: query).first.id) unless Style.where("name @@ :q", q: query).empty?
-     games3 = games.where("'#{query}' = ANY (tags)")
-     games = games1+games2+games3
+      sublist = []
+      sublist << search_name_or_description(query)
+      sublist << search_style(Style.where("name @@ :q", q: query).first.id) unless Style.where("name @@ :q", q: query).empty?
+      sublist << search_tags(query)
+      list << "(#{sublist.join(" OR ")})"
     end
-    games
+    where(list.join(" AND "))
+  end
+
+  private
+  def self.search_name_or_description(query)
+    "name @@ '#{query}' or description @@ '#{query}'"
   end
   
-  def self.search_any(queries)
-    games = []
-    queries.gsub(/\s+/m, ' ').strip.split(" ").each do |query|
-     games += where("name @@ :q or description @@:q", q: query)
-    end
-    games
+  def self.search_style(id)
+    "style_id = #{id}"
+  end
+  
+  def self.search_tags(query)
+    "'#{query}' = ANY (tags)"
   end
 end

@@ -15,3 +15,7 @@ Make search (by tag
 							by cards)
 							
 Link to pick random game
+
+Advanced Searches
+
+Add link to remove search query
