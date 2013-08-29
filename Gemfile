@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'bootstrap-sass-rails'
 gem 'redcarpet'
+gem 'will_paginate'
 
 group :development do
   gem 'better_errors'

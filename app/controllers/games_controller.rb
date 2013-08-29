@@ -4,7 +4,11 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+    unless params["search"].nil?
+      @games = Game.search_all(params["search"])
+    else
+      @games = Game.all
+    end
     @tags = tag_list
   end
 

@@ -3,8 +3,19 @@
 
 Tags:
 <% @tags.each do |tag| %>
-	<span class="badge"><%= tag %></span>
+	<span class="badge"><%= link_to tag, games_path(:search => tag) %></span>
 <% end %>
+<br/>
+<br/>
+<div>
+	<p>Search by name, description, tags, or style:</p>
+	<%= form_tag games_path, :method => 'get', :id => "games_search" do %>
+  	<p>
+    	<%= text_field_tag :search, params[:search] %>
+    	<%= submit_tag "Search", :name => nil %>
+  	</p>
+	<% end %>
+</div>
 
 <table class="table table-striped">
   <thead>
@@ -29,7 +40,7 @@ Tags:
         <td><%= game.max_players %></td>
         <td><%= game.num_cards %></td>
         <td><% game.tags.each do |tag| %>
-					<span class="badge"><%= tag %></span>
+					<span class="badge"><%= link_to tag, games_path(:search => tag) %></span>
 					<% end %>
 				</td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
