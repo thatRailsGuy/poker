@@ -7,6 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav class="navbar navbar-default" role="navigation">
+	  <!-- Brand and toggle get grouped for better mobile display -->
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	      <span class="sr-only">Toggle navigation</span>
+	    </button>
+			<%= link_to "Poker House", root_path, :class =>"navbar-brand" %>
+	  </div>
+
+	  <!-- Collect the nav links, forms, and other content for toggling -->
+	  <div class="collapse navbar-collapse navbar-ex1-collapse">
+	    <ul class="nav navbar-nav">
+	      <li><%= link_to "Games", games_path %></li>
+	      <li><%= link_to "Styles", styles_path %></li>
+	      <li><%= link_to "Definitions", definitions_path %></li>
+	      
+	    </ul>
+			<%= form_tag games_path, :method => 'get', :id => "games_search", :class => "navbar-form navbar-right" do %>
+		    <div class="form-group">	
+					<%= text_field_tag :search, params[:search], :class => "form-control", :placeholder => "Search Games" %>
+		    </div>
+				<%= submit_tag "Search", :name => nil, :class =>"btn btn-default" %>
+			<% end %>
+	  </div><!-- /.navbar-collapse -->
+	</nav>
 
 <%= yield %>
 

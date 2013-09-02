@@ -1,24 +1,18 @@
 <h1>Listing styles</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @styles.each do |style| %>
       <tr>
-        <td><%= style.name %></td>
+        <td><%= link_to style.name, edit_style_path(style) %></td>
         <td><%= style.description %></td>
-        <td><%= link_to 'Show', style %></td>
-        <td><%= link_to 'Edit', edit_style_path(style) %></td>
-        <td><%= link_to 'Destroy', style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

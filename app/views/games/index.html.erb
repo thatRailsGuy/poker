@@ -1,22 +1,13 @@
 <h1>Listing games</h1>
 
+<%= link_to 'New Game', new_game_path %> | <%= link_to 'Export as JSON', games_path(:format => :json) %><br/>
+
 
 Tags:
 <% @tags.each do |tag| %>
 	<span class="badge"><%= link_to tag, games_path(:search => tag) %></span>
 <% end %>
 <br/>
-<br/>
-<div>
-	<p>Search by name, description, tags, or style:</p>
-	<%= form_tag games_path, :method => 'get', :id => "games_search" do %>
-  	<p>
-    	<%= text_field_tag :search, params[:search] %>
-    	<%= submit_tag "Search", :name => nil %>
-  	</p>
-	<% end %>
-</div>
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -52,4 +43,4 @@ Tags:
 
 <br>
 
-<%= link_to 'New Game', new_game_path %>
+<%= link_to 'New Game', new_game_path %> | <%= link_to 'Export as JSON', games_path(:format => :json) %><br/>
