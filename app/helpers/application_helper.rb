@@ -1,11 +1,25 @@
 module ApplicationHelper
+  
+  def sortable(column, title=nil)
+    title ||= column.titleize
+    css_class = column == sort_column ? "active #{sort_direction}" : nil
+    direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+    if css_class == "active asc"
+      link_to raw(title+" <span class=\"glyphicon glyphicon-chevron-up\"></span>"), {:sort => column, :direction => direction, :search => params["search"]}, {:class => css_class}
+    elsif css_class == "active desc"
+      link_to raw(title+" <span class=\"glyphicon glyphicon-chevron-down\"></span>"), {:sort => column, :direction => direction, :search => params["search"]}, {:class => css_class}
+    else
+      link_to title, {:sort => column, :direction => direction, :search => params["search"]}, {:class => css_class}
+    end
+  end
+  
   def change_words_to_numbers(full_document)
     full_document.gsub(/(two)/,'2').gsub(/(three)/,'3').gsub(/(four)/,'4').gsub(/(five)/,'5').gsub(/(six)/,'6').gsub(/(seven)/,'7').gsub(/(eight)/,'8').gsub(/(nine)/,'9').gsub(/(ten)/,'10')
   end
   # Insert card images in markdown
   def insert_cards(full_document)
     full_document.gsub(/\[card:(.*?)\]/) do
-      "#{image_tag("SVG-cards-1.3/"+$1.tr(" ","_")+".svg", height: '64')}"
+      "#{image_tag("SVG-cards-1.3/"+$1.tr(" ","_").downcase+".svg", height: '64')}"
     end
   end
   # Insert link to a game referenced by name

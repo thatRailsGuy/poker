@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
   # GET /games
@@ -19,8 +20,9 @@ class GamesController < ApplicationController
       else
         @sort[params["sort_column"]] = "DESC"
       end
-      @games = @games.order("#{params["sort_column"]} #{params["sort_direction"]}")
+      
     end
+    @games = @games.order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
     @tags = tag_list
   end
 
@@ -88,5 +90,13 @@ class GamesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
       params.require(:game).permit(:name, :description, :style_id, :min_players, :max_players, :num_cards, tags: [])
+    end
+    
+    def sort_column
+      Game.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

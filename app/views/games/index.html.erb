@@ -1,7 +1,7 @@
 <% if params["search"] %>
 	<div class="alert alert-info alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		Searching for <strong>"<%= params["search"] %>"</strong>, click <%= link_to "here", games_path, :class =>"btn btn-default btn-sm" %> to clear search
+		Searching for <strong>"<%= params["search"] %>"</strong>, click <%= link_to "here", games_path(params.except("search")), :class =>"btn btn-default btn-sm" %> to clear search
 	</div>
 <% end %>
 <h1>Listing games</h1>
@@ -17,11 +17,11 @@ Tags:
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= link_to "Name", games_path(:sort_column => "name", :sort_direction => @sort["name"], :search => params["search"]) %></th>
-      <th><%= link_to "Style", games_path(:sort_column => "style_id", :sort_direction => @sort["style_id"], :search => params["search"])%></th>
-      <th><%= link_to "Minimum # of Players", games_path(:sort_column => "min_players", :sort_direction => @sort["min_players"], :search => params["search"])%></th>
-      <th><%= link_to "Maximum # of Players", games_path(:sort_column => "max_players", :sort_direction => @sort["max_players"], :search => params["search"])%></th>
-      <th><%= link_to "Number of Cards", games_path(:sort_column => "num_cards", :sort_direction => @sort["num_cards"], :search => params["search"])%></th>
+      <th><%= sortable "name" %></th>
+      <th><%= sortable "style_id", "Style" %></th>
+      <th><%= sortable "min_players", "Minimum # of Players"%></th>
+      <th><%= sortable "max_players", "Maximum # of Players"%></th>
+      <th><%= sortable "num_cards", "Number of Cards"%></th>
       <th>Tags</th>
       <th></th>
       <th></th>
@@ -47,6 +47,8 @@ Tags:
   </tbody>
 </table>
 
+<%= will_paginate @games %>
 <br>
+
 
 <%= link_to 'New Game', new_game_path %> | <%= link_to 'Export as JSON', games_path(:format => :json) %><br/>
