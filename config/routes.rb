@@ -1,4 +1,6 @@
 Poker2::Application.routes.draw do
+  resources :definitions
+
   resources :games
 
   resources :styles
