@@ -33,7 +33,10 @@
 			<% end %>
 	  </div><!-- /.navbar-collapse -->
 	</nav>
-	<div class="alert alert-danger">Attention: This page is intended to be used as it is developed. As such, I'd appreciate it if you don't delete anything on the page.</div>
+	<div class="alert alert-danger alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		Attention: This page is intended to be used as it is developed. As such, I'd appreciate it if you don't delete anything on the page.
+	</div>
 
 <%= yield %>
 

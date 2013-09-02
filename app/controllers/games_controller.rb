@@ -4,10 +4,22 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
+    @sort = {"name" => nil, "style_id" => nil, "min_players" => nil, "max_players" => nil, "num_cards" => nil}
     unless params["search"].nil?
       @games = Game.search_all(params["search"])
     else
       @games = Game.all
+    end
+    if params["sort_column"]
+      case params["sort_direction"]
+      when "ASC"
+        @sort[params["sort_column"]] = "DESC"
+      when "DESC"
+        @sort[params["sort_column"]] = "ASC"
+      else
+        @sort[params["sort_column"]] = "DESC"
+      end
+      @games = @games.order("#{params["sort_column"]} #{params["sort_direction"]}")
     end
     @tags = tag_list
   end

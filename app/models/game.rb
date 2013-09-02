@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to :style
+  default_scope :order => 'name'
   
   def self.search_all(queries)
     list = []
