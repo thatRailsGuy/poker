@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130827185957) do
+ActiveRecord::Schema.define(version: 20130829205039) do
 
   create_table "games", force: true do |t|
     t.string   "name"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20130827185957) do
 
   add_index "games", ["style_id"], name: "index_games_on_style_id", using: :btree
   add_index "games", ["tags"], name: "index_games_on_tags", using: :gin
+
+  create_table "search_suggestions", force: true do |t|
+    t.string   "term"
+    t.integer  "popularity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "styles", force: true do |t|
     t.string   "name"

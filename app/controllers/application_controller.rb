@@ -6,4 +6,7 @@ class ApplicationController < ActionController::Base
   def tag_list
     Game.pluck(:tags).flatten.uniq
   end
+  def style_list
+    Style.pluck(:name)
+  end
 end
