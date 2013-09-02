@@ -8,7 +8,7 @@ Can see it in action here [http://poker-house.herokuapp.com/](http://poker-house
 
 TODO
 ========
-Make tags clickable
+Advanced Searches
 
 Make search (by tag
 							by style
@@ -18,6 +18,6 @@ Make search (by tag
 							
 Link to pick random game
 
-Advanced Searches
+Add custom pagination options
 
-Add link to remove search query
+add testing

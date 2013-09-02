@@ -16,13 +16,13 @@
 				</li><% end %>
 			</ul>
 		</div><% end %>
-		<div class="field">
+		<div class="form-group">
 			<%= f.label :name %><br>
-			<%= f.text_field :name %>
+			<%= f.text_field :name, class: "form-control" %>
 		</div>
-		<div class="field">
+		<div class="form-group">
 			<%= f.label :description %><br>
-			<p>Use markdown for description. <a href="#" onclick="toggle_visibility('markdown_examples');">Click here for examples</a>
+			<p class="help-block">Use markdown for description. <a href="#" onclick="toggle_visibility('markdown_examples');">Click here for examples</a>
 			</p>
 			<div id="markdown_examples" style="display: none;">
 				<table class="table table-bordered table-condensed table-striped" >
@@ -85,27 +85,28 @@
 						<tr><td>[game:sample]</td><td><%= markdown("[game:sample]")%></td></tr>
 					</tbody>
 				</table>
-			</div><%= f.text_area :description %>
+			</div>
+			<%= f.text_area :description, class: "form-control", rows: "10" %>
 		</div>
-		<div class="field">
+		<div class="form-group">
 			<%= f.label :style_id %><br>
-			<%= f.collection_radio_buttons :style_id, Style.all, :id, :name %>
+			<%= f.collection_radio_buttons :style_id, Style.all, :id, :name, class: "form-control" %>
 		</div>
-		<div class="field">
+		<div class="form-group">
 			<%= f.label :min_players %><br>
-			<%= f.number_field :min_players %>
+			<%= f.number_field :min_players, class: "form-control" %>
 		</div>
-		<div class="field">
+		<div class="form-group">
 			<%= f.label :max_players %><br>
-			<%= f.number_field :max_players %>
+			<%= f.number_field :max_players, class: "form-control" %>
 		</div>
-		<div class="field">
+		<div class="form-group">
 			<%= f.label :num_cards %><br>
-			<%= f.number_field :num_cards %>
+			<%= f.number_field :num_cards, class: "form-control" %>
 		</div>
-		<div class="field">
+		<div class="form-group">
 			<%= f.label :tags %><br>
-			<%= f.collection_check_boxes :tags, %w[wildcard pot-matching dickish hi-lo], :to_s, :to_s%>
+			<%= f.collection_check_boxes :tags, %w[wildcard pot-matching dickish hi-lo], :to_s, :to_s, class: "form-control"%>
 		</div>
 		<div class="actions">
 			<%= f.submit %>
