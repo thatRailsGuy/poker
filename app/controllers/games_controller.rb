@@ -22,7 +22,10 @@ class GamesController < ApplicationController
       end
       
     end
-    @games = @games.order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    params["show"] ||= 10
+    params["show"] = @games.count if params["show"] == "all"
+    @games = @games.order(sort_column + " " + sort_direction).paginate(:per_page => params["show"], :page => params[:page])
+    @show = params["show"]
     @tags = tag_list
   end
 
