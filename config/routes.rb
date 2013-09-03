@@ -1,11 +1,14 @@
 Poker2::Application.routes.draw do
   resources :definitions
 
+  get 'games/random' => 'games#random'
   resources :games
 
   resources :styles
   
   root 'games#index'
+  
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

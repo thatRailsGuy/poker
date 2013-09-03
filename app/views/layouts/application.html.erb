@@ -23,6 +23,7 @@
 	      <li><%= link_to "Games", games_path %></li>
 	      <li><%= link_to "Styles", styles_path %></li>
 	      <li><%= link_to "Definitions", definitions_path %></li>
+	      <li><%= link_to "Random Game", games_random_path %></li>
 	      
 	    </ul>
 			<%= form_tag games_path, :method => 'get', :id => "games_search", :class => "navbar-form navbar-right" do %>
@@ -35,6 +36,7 @@
 			<% end %>
 	  </div><!-- /.navbar-collapse -->
 	</nav>
+	<a href="https://github.com/thatRailsGuy/poker"><img style="position: absolute; top: 40; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 	<div class="alert alert-danger alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		Attention: This page is intended to be used as it is developed. As such, I'd appreciate it if you don't delete anything on the page.

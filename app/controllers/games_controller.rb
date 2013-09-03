@@ -33,6 +33,12 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
   end
+  
+  # GET /games/random
+  def random
+    @game = Game.order("RANDOM()").first
+    render 'show'
+  end
 
   # GET /games/new
   def new
