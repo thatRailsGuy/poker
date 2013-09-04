@@ -2,6 +2,7 @@ Poker2::Application.routes.draw do
   resources :definitions
 
   get 'games/random' => 'games#random'
+  get 'games/calc' => 'games#calc'
   resources :games
 
   resources :styles
