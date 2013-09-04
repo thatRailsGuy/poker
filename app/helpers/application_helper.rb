@@ -14,7 +14,7 @@ module ApplicationHelper
   end
   
   def change_words_to_numbers(full_document)
-    full_document.gsub(/(two)/,'2').gsub(/(three)/,'3').gsub(/(four)/,'4').gsub(/(five)/,'5').gsub(/(six)/,'6').gsub(/(seven)/,'7').gsub(/(eight)/,'8').gsub(/(nine)/,'9').gsub(/(ten)/,'10')
+    full_document.gsub(/(\[card:two)/,'[card:2').gsub(/(\[card:three)/,'[card:3').gsub(/(\[card:four)/,'[card:4').gsub(/(\[card:five)/,'[card:5').gsub(/(\[card:six)/,'[card:6').gsub(/(\[card:seven)/,'[card:7').gsub(/(\[card:eight)/,'[card:8').gsub(/(\[card:nine)/,'[card:9').gsub(/(\[card:ten)/,'[card:10')
   end
   # Insert card images in markdown
   def insert_cards(full_document)
