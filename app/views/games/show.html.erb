@@ -33,7 +33,7 @@
 <p>
   <strong>Tags:</strong>
   <% @game.tags.each do |tag| %>
-		<span class="badge"><%= tag %></span>
+		<%= clickable_tag(tag) %>
 	<% end %>
 </p>
 

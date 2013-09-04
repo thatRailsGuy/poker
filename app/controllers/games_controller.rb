@@ -39,6 +39,11 @@ class GamesController < ApplicationController
     @game = Game.order("RANDOM()").first
     render 'show'
   end
+  
+  # GET /games/calc
+  def calc
+    
+  end
 
   # GET /games/new
   def new

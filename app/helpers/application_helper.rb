@@ -5,12 +5,18 @@ module ApplicationHelper
     css_class = column == sort_column ? "active #{sort_direction}" : nil
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     if css_class == "active asc"
-      link_to raw(title+" <span class=\"glyphicon glyphicon-chevron-up\"></span>"), {:sort => column, :direction => direction, :search => params["search"]}, {:class => css_class}
+      link_text = raw(title+" <span class=\"glyphicon glyphicon-chevron-up\"></span>")
     elsif css_class == "active desc"
-      link_to raw(title+" <span class=\"glyphicon glyphicon-chevron-down\"></span>"), {:sort => column, :direction => direction, :search => params["search"]}, {:class => css_class}
+      link_text = raw(title+" <span class=\"glyphicon glyphicon-chevron-down\"></span>")
     else
-      link_to title, {:sort => column, :direction => direction, :search => params["search"]}, {:class => css_class}
+      link_text = title
     end
+    # link_to link_text, {:sort => column, :direction => direction, :search => params["search"]}, {:class => css_class}
+    link_to link_text, params.merge(sort: column, direction: direction), {:class => css_class}
+  end
+  
+  def clickable_tag(tag)
+    "<span class=\"badge\">#{link_to tag, games_path(params.merge(search: tag).except(:id))}</span>".html_safe
   end
   
   def change_words_to_numbers(full_document)
