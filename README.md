@@ -21,8 +21,6 @@ Make search (by tag
 							by number of players
 							by cards)
 							
-Link to pick random game
-
-Add custom pagination options
-
 add testing
+
+Separate the csv and json to different action on controller
