@@ -2,6 +2,14 @@ class GamesController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
+  # GET /welcome
+  def welcome
+    @games = Hash.new
+    @games[:new] = Game.order(created_at: :desc).limit(5)
+    @games[:updated] = Game.order(updated_at: :desc).limit(5)
+    @games[:random] = Game.order("RANDOM()").limit(5)
+  end
+  
   # GET /games
   # GET /games.json
   def index
@@ -24,6 +32,7 @@ class GamesController < ApplicationController
     end
     params["show"] ||= 10
     params["show"] = @games.count if params["show"] == "all"
+    @all_games = @games.order(sort_column + " " + sort_direction)
     @games = @games.order(sort_column + " " + sort_direction).paginate(:per_page => params["show"], :page => params[:page])
     @show = params["show"]
     @tags = tag_list
