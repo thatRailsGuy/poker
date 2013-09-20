@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-4">
+  	<div class="panel panel-info">
+			<div class="panel-heading">Newest Games</div>
+		  <div class="panel-body">
+		    <% @games[:new].each do |game| %>
+					<%= link_to game.name, game, class: "list-group-item"%>
+				<% end %>
+		  </div>
+		</div>
+  </div>
+  <div class="col-md-4">
+  	<div class="panel panel-info">
+			<div class="panel-heading">Recently Updated Games</div>
+		  <div class="panel-body">
+		    <% @games[:updated].each do |game| %>
+					<%= link_to game.name, game, class: "list-group-item"%>
+				<% end %>
+		  </div>
+		</div>
+  </div>
+	<div class="col-md-4">
+  	<div class="panel panel-info">
+			<div class="panel-heading">Random Games</div>
+		  <div class="panel-body">
+		    <% @games[:random].each do |game| %>
+					<%= link_to game.name, game, class: "list-group-item"%>
+				<% end %>
+		  </div>
+		</div>
+  </div>
+</div>
