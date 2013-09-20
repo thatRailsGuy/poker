@@ -5,6 +5,7 @@
     <tr>
       <th>Word</th>
       <th>Definition</th>
+			<th></th>
     </tr>
   </thead>
 
@@ -13,7 +14,8 @@
       <tr>
         <td><%= link_to definition.word, edit_definition_path(definition) %></td>
         <td><%= definition.definition %></td>
-      </tr>
+      	<td><%= link_to 'Delete', definition, method: :delete %></td>
+			</tr>
     <% end %>
   </tbody>
 </table>
