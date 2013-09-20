@@ -3,6 +3,7 @@ Poker2::Application.routes.draw do
 
   get 'games/random' => 'games#random'
   get 'games/calc' => 'games#calc'
+  get 'games/welcome' => 'games#welcome'
   resources :games
 
   resources :styles
