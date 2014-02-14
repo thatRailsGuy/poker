@@ -11,7 +11,11 @@
   <tbody>
     <% @styles.each do |style| %>
       <tr>
-        <td><%= link_to style.name, edit_style_path(style) %></td>
+		<% if admin_signed_in? %>
+        	<td><%= link_to style.name, edit_style_path(style) %></td>
+		<% else %>
+        	<td><%= link_to style.name, style_path(style) %></td>
+		<% end %>
         <td><%= style.description %></td>
       </tr>
     <% end %>

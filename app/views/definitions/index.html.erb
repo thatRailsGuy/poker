@@ -12,9 +12,15 @@
   <tbody>
     <% @definitions.each do |definition| %>
       <tr>
-        <td><%= link_to definition.word, edit_definition_path(definition) %></td>
-        <td><%= definition.definition %></td>
-      	<td><%= link_to 'Delete', definition, method: :delete %></td>
+		<% if admin_signed_in? %>
+        	<td><%= link_to definition.word, edit_definition_path(definition) %></td>
+		<% else %>
+			<td><%= link_to definition.word, definition_path(definition) %></td>
+		<% end %>
+		<td><%= definition.definition %></td>
+		<% if admin_signed_in? %>
+	      	<td><%= link_to 'Delete', definition, method: :delete %></td>
+		<% end %>
 			</tr>
     <% end %>
   </tbody>

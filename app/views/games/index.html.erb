@@ -34,8 +34,10 @@
       <th><%= sortable "max_players", "Maximum # of Players"%></th>
       <th><%= sortable "num_cards", "Number of Cards"%></th>
       <th>Tags</th>
-      <th></th>
-      <th></th>
+ 	  <% if admin_signed_in? %>
+      	<th></th>
+      	<th></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -52,8 +54,10 @@
 						<%= clickable_tag(tag) %>
 					<% end %>
 				</td>
+		<% if admin_signed_in? %>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
         <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
       </tr>
     <% end %>
   </tbody>

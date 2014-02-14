@@ -1,6 +1,6 @@
 class DefinitionsController < ApplicationController
   before_action :set_definition, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /definitions
   # GET /definitions.json
   def index

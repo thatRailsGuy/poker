@@ -10,5 +10,7 @@
   <%= @definition.definition %>
 </p>
 
-<%= link_to 'Edit', edit_definition_path(@definition) %> |
+<% if admin_signed_in? %>
+	<%= link_to 'Edit', edit_definition_path(@definition) %> |
+<% end %>
 <%= link_to 'Back', definitions_path %>
