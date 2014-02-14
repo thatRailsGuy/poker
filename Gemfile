@@ -33,6 +33,7 @@ gem 'bootstrap-sass-rails'
 gem 'redcarpet'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'devise'
 
 group :development do
   gem 'better_errors'
