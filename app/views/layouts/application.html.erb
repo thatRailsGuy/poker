@@ -24,7 +24,15 @@
 	      <li><%= link_to "Styles", styles_path %></li>
 	      <li><%= link_to "Definitions", definitions_path %></li>
 	      <li><%= link_to "Random Game", games_random_path %></li>
-	      
+		  <% if admin_signed_in? %>
+		    <li>
+		    <%= link_to('Logout', destroy_admin_session_path, :method => :delete) %>        
+		    </li>
+		  <% else %>
+		    <li>
+		    <%= link_to('Login', new_admin_session_path)  %>  
+		    </li>
+		  <% end %>
 	    </ul>
 			<%= form_tag games_path, :method => 'get', :id => "games_search", :class => "navbar-form navbar-right" do %>
 		    <div class="form-group">	
@@ -37,11 +45,12 @@
 			<% end %>
 	  </div><!-- /.navbar-collapse -->
 	</nav>
-	<a href="https://github.com/thatRailsGuy/poker"><img style="position: absolute; top: 40; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-	<div class="alert alert-danger alert-dismissable">
+	<% if alert %><div class="alert alert-danger alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		Attention: This page is intended to be used as it is developed. As such, I'd appreciate it if you don't delete anything on the page.
-	</div>
+		<%= alert %>
+	</div><% end %>
+	<% if notice %><div class="alert alert-info alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><%= notice %></div><% end %>
 
 	<div class="row">
 	  <div class="col-md-1"></div>

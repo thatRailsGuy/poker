@@ -1,4 +1,5 @@
 Poker2::Application.routes.draw do
+  devise_for :admins
   resources :definitions
 
   get 'games/random' => 'games#random'

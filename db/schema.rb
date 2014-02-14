@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130902053529) do
+ActiveRecord::Schema.define(version: 20140214184915) do
+
+  create_table "admins", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "definitions", force: true do |t|
     t.string   "word"
@@ -22,25 +40,18 @@ ActiveRecord::Schema.define(version: 20130902053529) do
 
   create_table "games", force: true do |t|
     t.string   "name"
-    t.text     "description", default: "Description:\n-\n\n{description goes here}\nRelated Games:\n-\n[game:sample]\n\nWalkthrough:\n-\n\n{sample walkthrough to be replaced\nInitial deal - \n\n * player 1 - [card:ace of spades][card:two of spades]\n * player 2 - [card:ace of clubs][card:two of clubs]\n * player 3 - [card:ace of hearts][card:two of hearts]\n\nRound of betting\n\nDeal a community card - [card:king of diamonds]\n\nRound of betting\n\nDeclare winner\n}"
-    t.integer  "style_id"
+    t.text     "description"
+    t.integer  "style_id",    default: 0
     t.integer  "min_players"
     t.integer  "max_players"
     t.integer  "num_cards"
-    t.string   "tags",        default: [],                                                                                                                                                                                                                                                                                                                                                                                                                                               array: true
+    t.string   "tags",        default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "games", ["style_id"], name: "index_games_on_style_id", using: :btree
   add_index "games", ["tags"], name: "index_games_on_tags", using: :gin
-
-  create_table "search_suggestions", force: true do |t|
-    t.string   "term"
-    t.integer  "popularity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "styles", force: true do |t|
     t.string   "name"
