@@ -15,7 +15,7 @@ TODO
 ========
 Advanced Searches
 
-Make search (by tag
+Make faceted search (by tag
 							by style
 							by name
 							by number of players
@@ -23,4 +23,3 @@ Make search (by tag
 							
 add testing
 
-Separate the csv and json to different action on controller
