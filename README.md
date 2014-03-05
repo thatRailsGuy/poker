@@ -3,7 +3,7 @@ poker
 
 A repository of poker and other card game variances
 
-Can see it in action here [http://poker-house.herokuapp.com/](http://poker-house.herokuapp.com/)
+Can see it in action here [http://poker.clintcecil.com/](http://poker.clintcecil.com/)
 
 
 To import database from heroku: run this command from the folder, replacing username and database with the database name and username associated with the app from the database.yml:
